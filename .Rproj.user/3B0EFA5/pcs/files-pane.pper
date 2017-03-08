@@ -1,0 +1,9 @@
+{
+    "path" : "~/Documents/GitHub/Oil-Production-By-State",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

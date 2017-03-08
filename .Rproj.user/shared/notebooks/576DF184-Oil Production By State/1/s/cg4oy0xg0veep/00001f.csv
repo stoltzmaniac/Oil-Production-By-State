@@ -1,0 +1,8 @@
+"0","df = data %>% "
+"0","  group_by(Year) %>%"
+"0","  summarise(ThousandBarrel = sum(ThousandBarrel))"
+"0","p = ggplot(df,aes(x=Year,y=ThousandBarrel,group=1))"
+"0","p + geom_line(stat='identity') + "
+"0","  ggtitle('Oil Production By Year in the U.S.') + "
+"0","  theme(plot.title = element_text(hjust = 0.5)) + "
+"0","  theme(axis.text.x = element_text(angle = 90, hjust = 1))"

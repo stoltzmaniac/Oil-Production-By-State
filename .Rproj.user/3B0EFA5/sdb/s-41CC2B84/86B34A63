@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# This file will prepare the data\n# Data was originally found on data.world\n# http://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbbl_m.htm\n\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(zoo)\n\ngetData = function(){\n  \n  data = read.csv('Monthly Crude Oil Production by State 1981 - Nov 2016.csv')\n  data = data[data$Date != 'Back to Contents',]\n  data = data[data$Date != 'Sourcekey',]\n  data = data[data$Date != '',]\n  \n  #Convert data \n  df = data.frame(data %>% gather(Date,ThousandBarrel))\n  df$Location = df$Date.1\n  df$Date.1 = NULL\n\n  df = data.frame(df %>% separate(Date,c('Month','Year'),\"-\"))\n  df$Date = as.Date(as.yearmon(paste(df$Month,df$Year)))\n  \n  df$Location = as.character(sub('.Field.Production.of.Crude.Oil..Thousand.Barrels.','',df$Location))\n  df$ThousandBarrel = as.numeric(df$ThousandBarrel)\n  \n  States = data.frame(Location = as.character(state.name))\n  \n  df = merge(df,States,by='Location')\n  df$Month = factor(df$Month, levels = month.abb)\n  \n  return(df)\n  \n}\n",
+    "created" : 1488995792551.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2377293463",
+    "id" : "86B34A63",
+    "lastKnownWriteTime" : 1489011373,
+    "last_content_update" : 1489011373887,
+    "path" : "~/Documents/GitHub/Oil-Production-By-State/data_preparation.R",
+    "project_path" : "data_preparation.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,4 @@
+"0","source('data_preparation.R')"
+"0","library(ggplot2)"
+"0","library(dplyr)"
+"0","data = getData()"

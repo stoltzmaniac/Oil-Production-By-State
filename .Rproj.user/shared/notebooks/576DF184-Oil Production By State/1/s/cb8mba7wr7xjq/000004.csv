@@ -1,0 +1,8 @@
+"0","top10 = data %>%"
+"0","  group_by(Location) %>%"
+"0","  summarise(ThousandBarrel = sum(ThousandBarrel)) %>%"
+"0","  arrange(-ThousandBarrel) %>%"
+"0","  top_n(10)"
+"2","Selecting by ThousandBarrel
+"
+"0","print(top10)"
